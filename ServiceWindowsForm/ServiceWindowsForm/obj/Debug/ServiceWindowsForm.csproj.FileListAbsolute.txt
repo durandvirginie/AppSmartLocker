@@ -1,0 +1,10 @@
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\ServiceWindowsForm.exe.config
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\ServiceWindowsForm.exe
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\ServiceWindowsForm.pdb
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.csprojAssemblyReference.cache
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.Properties.Resources.resources
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.csproj.GenerateResource.cache
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.exe
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.pdb
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.Details.resources
+C:\Users\c96du\source\repos\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.AppSmartLockAccueil.resources
