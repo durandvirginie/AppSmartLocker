@@ -160,7 +160,6 @@
             chartArea1.Name = "ChartArea1";
             this.chartQuo.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            legend1.Title = "Id app";
             this.chartQuo.Legends.Add(legend1);
             this.chartQuo.Location = new System.Drawing.Point(267, 32);
             this.chartQuo.Name = "chartQuo";
