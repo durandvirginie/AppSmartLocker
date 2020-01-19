@@ -21,7 +21,6 @@ C:\Users\Orlane\source\repos\AppSmartLocker\ServiceWindowsForm\ServiceWindowsFor
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\ServiceWindowsForm.exe.config
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\ServiceWindowsForm.exe
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\ServiceWindowsForm.pdb
-C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.csprojAssemblyReference.cache
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.Details.resources
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.AppSmartLockAccueil.resources
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.Properties.Resources.resources
