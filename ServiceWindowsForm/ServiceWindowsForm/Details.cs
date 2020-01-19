@@ -93,14 +93,14 @@ namespace ServiceWindowsForm
         private void save_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //si l'application est déjà controllée et connue de notre BDD, on met à jour les valeurs :
-            if(this.isControlled)
+            if (this.isControlled)
             {
                 SqlConnection AppSmartCo = new SqlConnection(this.ConnectionString);
-                string requete = "UPDATE TempsDefini SET [Duree_blocage] = " + dureeBlocage.Value + ", [Lundi] = "+ dureeLundi.Value + 
-                    ", [Lundi_actif] = '" + ActifLundi.Checked+"', [Mardi] = "+ dureeMardi.Value+", [Mardi_actif] = '"+ ActifMardi.Checked+"', [Mercredi] = "+dureeMercredi.Value+
-                    ", [Mercredi_actif] = '"+ ActifMercredi.Checked +"', [Jeudi] = "+ dureeJeudi.Value +", [Jeudi_actif] = '"+ActifJeudi.Checked+"', [Vendredi] = "+dureeVendredi.Value+
-                    ", [Vendredi_actif] = '"+ActifVendredi.Checked +"', [Samedi] = "+dureeSamedi.Value+", [Samedi_actif]= '"+ActifSamedi.Checked+"',[Dimanche] = "+dureeDimanche.Value+
-                    ", [Dimanche_actif] = '"+ActifDimanche.Checked+ "' where [Id_app] = (SELECT id_app FROM ApplicationControlable WHERE Nom_app = '" + selectedApp + "')";
+                string requete = "UPDATE TempsDefini SET [Duree_blocage] = " + dureeBlocage.Value + ", [Lundi] = " + dureeLundi.Value +
+                    ", [Lundi_actif] = '" + ActifLundi.Checked + "', [Mardi] = " + dureeMardi.Value + ", [Mardi_actif] = '" + ActifMardi.Checked + "', [Mercredi] = " + dureeMercredi.Value +
+                    ", [Mercredi_actif] = '" + ActifMercredi.Checked + "', [Jeudi] = " + dureeJeudi.Value + ", [Jeudi_actif] = '" + ActifJeudi.Checked + "', [Vendredi] = " + dureeVendredi.Value +
+                    ", [Vendredi_actif] = '" + ActifVendredi.Checked + "', [Samedi] = " + dureeSamedi.Value + ", [Samedi_actif]= '" + ActifSamedi.Checked + "',[Dimanche] = " + dureeDimanche.Value +
+                    ", [Dimanche_actif] = '" + ActifDimanche.Checked + "' where [Id_app] = (SELECT id_app FROM ApplicationControlable WHERE Nom_app = '" + selectedApp + "')";
                 SqlCommand command2 = new SqlCommand(requete, AppSmartCo);
                 AppSmartCo.Open();
                 command2.ExecuteNonQuery();
@@ -111,11 +111,137 @@ namespace ServiceWindowsForm
                 AppSmartLockAccueil Accueil = new AppSmartLockAccueil();
                 Accueil.Show();
                 this.Hide();
-            } else
+            }
+            // il faut créer l'application dans toutes les tables :
+            else
             {
-                //insert into ApplicationControllee + Controllable + TempsDefini
+
+                insertAppControlable(this.selectedApp);
+                insertAppControlee(this.selectedApp);
+                insertTempsDefini(this.selectedApp);
+                //retour à l'accueil :
+                AppSmartLockAccueil Accueil = new AppSmartLockAccueil();
+                Accueil.Show();
+                this.Hide();
             }
 
+        }
+        private void insertAppControlable(string nomApp)
+        {
+            SqlConnection AppSmartCo = new SqlConnection(this.ConnectionString);
+
+            string requete = "INSERT INTO ApplicationControlable (Id_app, Nom_app) values (@id, @nomApp)";
+            SqlCommand command2 = new SqlCommand(requete, AppSmartCo);
+            command2.Parameters.AddWithValue("@id", getSizeApp()+1);
+            command2.Parameters.AddWithValue("@nomApp", nomApp);
+            AppSmartCo.Open();
+            command2.ExecuteNonQuery();
+            AppSmartCo.Close();
+        }
+
+        private void insertAppControlee(string nomApp)
+        {
+            SqlConnection AppSmartCo = new SqlConnection(this.ConnectionString);
+
+            string requete = "INSERT INTO ApplicationControlee (Id_app, Est_actif, Tps_exe_restant, Tps_limite_atteinte) values (@idApp, @Actif,@tps, @tps_limite)";
+            SqlCommand command2 = new SqlCommand(requete, AppSmartCo);
+            command2.Parameters.AddWithValue("@idApp", getIdApp(nomApp));
+            command2.Parameters.AddWithValue("@Actif", true);
+            command2.Parameters.AddWithValue("@tps", -1);
+            command2.Parameters.AddWithValue("@tps_limite", new DateTime(1754, 1, 1, 0, 0, 0));
+
+            AppSmartCo.Open();
+            command2.ExecuteNonQuery();
+            AppSmartCo.Close();
+        }
+
+        private void insertTempsDefini(string nomApp)
+        {
+            SqlConnection AppSmartCo = new SqlConnection(this.ConnectionString);
+
+            string requete = "INSERT INTO TempsDefini (Id_app, Duree_blocage, Lundi, Lundi_actif,Mardi, Mardi_actif, Mercredi, Mercredi_actif, Jeudi, Jeudi_actif,Vendredi, Vendredi_actif, Samedi, Samedi_actif, Dimanche, Dimanche_actif)" +
+                " values (@id, @dureeBlocage, @dureeLundi,@ActifLundi, @dureeMardi, @ActifMardi, @dureeMercredi, @ActifMercredi,@dureeJeudi, @ActifJeudi, @dureeVendredi, @ActifVendredi, @dureeSamedi, @ActifSamedi, @dureeDimanche, @ActifDimanche)";
+            SqlCommand command2 = new SqlCommand(requete, AppSmartCo);
+            command2.Parameters.AddWithValue("@id", getIdApp(nomApp));
+            command2.Parameters.AddWithValue("@dureeBlocage", dureeBlocage.Value);
+            command2.Parameters.AddWithValue("@dureeLundi", dureeLundi.Value);
+            command2.Parameters.AddWithValue("@ActifLundi", ActifLundi.Checked);
+            command2.Parameters.AddWithValue("@dureeMardi", dureeMardi.Value);
+            command2.Parameters.AddWithValue("@ActifMardi", ActifMardi.Checked);
+            command2.Parameters.AddWithValue("@dureeMercredi", dureeMercredi.Value);
+            command2.Parameters.AddWithValue("@ActifMercredi", ActifMercredi.Checked);
+            command2.Parameters.AddWithValue("@dureeJeudi", dureeJeudi.Value);
+            command2.Parameters.AddWithValue("@ActifJeudi", ActifJeudi.Checked);
+            command2.Parameters.AddWithValue("@dureeVendredi", dureeVendredi.Value);
+            command2.Parameters.AddWithValue("@ActifVendredi", ActifVendredi.Checked);
+            command2.Parameters.AddWithValue("@dureeSamedi", dureeSamedi.Value);
+            command2.Parameters.AddWithValue("@ActifSamedi", ActifSamedi.Checked);
+            command2.Parameters.AddWithValue("@dureeDimanche", dureeDimanche.Value);
+            command2.Parameters.AddWithValue("@ActifDimanche", ActifDimanche.Checked);
+
+            AppSmartCo.Open();
+            command2.ExecuteNonQuery();
+            AppSmartCo.Close();
+        }
+
+        private int getIdApp(String nomApp)
+        {
+            string requete = "Select Id_app FROM ApplicationControlable WHERE Nom_app = '" + nomApp + "'";
+            SqlConnection AppSmartCo = new SqlConnection(this.ConnectionString);
+            SqlCommand newcommand = new SqlCommand(requete, AppSmartCo);
+            AppSmartCo.Open();
+            int id = (int)newcommand.ExecuteScalar();
+            AppSmartCo.Close();
+
+            return id;
+        }
+
+        //retourne la taille de la table AppControlable afin de définir un ID à la nouvelle application à controler
+        private int getSizeApp()
+        {
+            string requete = "Select count(Id_app) FROM ApplicationControlable";
+            SqlConnection AppSmartCo = new SqlConnection(this.ConnectionString);
+            SqlCommand newcommand = new SqlCommand(requete, AppSmartCo);
+            AppSmartCo.Open();
+            int id = (int)newcommand.ExecuteScalar();
+            AppSmartCo.Close();
+
+            return id; 
+        }
+
+        //si l'admin veut supprimer les parametres de controle, on supprime les données dessus présentes dans la BDD :
+        private void delete_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (this.isControlled)
+            {
+                SqlConnection AppSmartCo = new SqlConnection(this.ConnectionString);
+
+                //suppression dans la table temps :
+                string requete = "DELETE FROM TempsDefini where [Id_app] = "+getIdApp(this.selectedApp);
+                SqlCommand command2 = new SqlCommand(requete, AppSmartCo);
+                AppSmartCo.Open();
+                command2.ExecuteNonQuery();
+                AppSmartCo.Close();
+
+                //suppression dans la table ApplicationControlee :
+                requete = "DELETE FROM ApplicationControlee where [Id_app] = " + getIdApp(this.selectedApp);
+                command2 = new SqlCommand(requete, AppSmartCo);
+                AppSmartCo.Open();
+                command2.ExecuteNonQuery();
+                AppSmartCo.Close();
+
+                //suppression dans la table ApplicationControlable :
+                requete = "DELETE FROM ApplicationControlable where [Nom_app] = '" + this.selectedApp+"'";
+                command2 = new SqlCommand(requete, AppSmartCo);
+                AppSmartCo.Open();
+                command2.ExecuteNonQuery();
+                AppSmartCo.Close();
+
+                //retour à l'accueil :
+                AppSmartLockAccueil Accueil = new AppSmartLockAccueil();
+                Accueil.Show();
+                this.Hide();
+            }
         }
     }
 }

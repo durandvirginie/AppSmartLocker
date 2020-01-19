@@ -60,10 +60,6 @@ namespace ServiceWindowsForm
             // Remplir la DataGridView
             RemplirLesProcess();
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void RemplirLesProcess()
         {
@@ -85,10 +81,6 @@ namespace ServiceWindowsForm
 
         }
        
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         static DataTable ConvertListToDataTable(List<string[]> list)
         {

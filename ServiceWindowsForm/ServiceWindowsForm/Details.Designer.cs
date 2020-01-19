@@ -424,6 +424,7 @@
             this.delete.TabStop = true;
             this.delete.Text = "Supprimer les paramètres";
             this.delete.VisitedLinkColor = System.Drawing.Color.IndianRed;
+            this.delete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.delete_LinkClicked);
             // 
             // linkLabel2
             // 
