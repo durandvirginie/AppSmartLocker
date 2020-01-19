@@ -41,7 +41,6 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.process1 = new System.Diagnostics.Process();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Accueil.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -79,8 +78,6 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
             this.dataGridView1.Location = new System.Drawing.Point(3, 7);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -184,16 +181,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Bienvenue sur votre application SmartLocker";
             // 
-            // Column1
-            // 
-            this.Column1.FalseValue = "false";
-            this.Column1.HeaderText = "Column1";
-            this.Column1.IndeterminateValue = "in";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.TrueValue = "true";
-            // 
             // AppSmartLockAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -230,7 +217,6 @@
         private System.Diagnostics.Process process1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
     }
 }
 
