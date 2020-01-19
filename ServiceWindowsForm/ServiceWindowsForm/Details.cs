@@ -92,7 +92,7 @@ namespace ServiceWindowsForm
         //changement à faire dans la bdd en fonction des nouveaux éléments :
         private void save_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //si l'application est déjà controllée et connue de notre BDD, on met à jour les valeurs :
+            
             if (this.isControlled)
             {
                 SqlConnection AppSmartCo = new SqlConnection(this.ConnectionString);

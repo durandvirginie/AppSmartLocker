@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppSmartLockerModel1StoreContainer" CdmEntityContainer="AppSmartLockerEntities1">
+    <EntitySetMapping Name="ApplicationControlables">
+      <EntityTypeMapping TypeName="AppSmartLockerModel1.ApplicationControlable">
+        <MappingFragment StoreEntitySet="ApplicationControlable">
+          <ScalarProperty Name="Id_app" ColumnName="Id_app" />
+          <ScalarProperty Name="Nom_app" ColumnName="Nom_app" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationControlees">
+      <EntityTypeMapping TypeName="AppSmartLockerModel1.ApplicationControlee">
+        <MappingFragment StoreEntitySet="ApplicationControlee">
+          <ScalarProperty Name="Id_app" ColumnName="Id_app" />
+          <ScalarProperty Name="Est_actif" ColumnName="Est_actif" />
+          <ScalarProperty Name="Tps_exe_restant" ColumnName="Tps_exe_restant" />
+          <ScalarProperty Name="Tps_limite_atteinte" ColumnName="Tps_limite_atteinte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Historiques">
+      <EntityTypeMapping TypeName="AppSmartLockerModel1.Historique">
+        <MappingFragment StoreEntitySet="Historique">
+          <ScalarProperty Name="Id_app" ColumnName="Id_app" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Temps_total" ColumnName="Temps_total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempsDefinis">
+      <EntityTypeMapping TypeName="AppSmartLockerModel1.TempsDefini">
+        <MappingFragment StoreEntitySet="TempsDefini">
+          <ScalarProperty Name="Id_app" ColumnName="Id_app" />
+          <ScalarProperty Name="Duree_blocage" ColumnName="Duree_blocage" />
+          <ScalarProperty Name="Lundi" ColumnName="Lundi" />
+          <ScalarProperty Name="Lundi_actif" ColumnName="Lundi_actif" />
+          <ScalarProperty Name="Mardi" ColumnName="Mardi" />
+          <ScalarProperty Name="Mardi_actif" ColumnName="Mardi_actif" />
+          <ScalarProperty Name="Mercredi" ColumnName="Mercredi" />
+          <ScalarProperty Name="Mercredi_actif" ColumnName="Mercredi_actif" />
+          <ScalarProperty Name="Jeudi" ColumnName="Jeudi" />
+          <ScalarProperty Name="Jeudi_actif" ColumnName="Jeudi_actif" />
+          <ScalarProperty Name="Vendredi" ColumnName="Vendredi" />
+          <ScalarProperty Name="Vendredi_actif" ColumnName="Vendredi_actif" />
+          <ScalarProperty Name="Samedi" ColumnName="Samedi" />
+          <ScalarProperty Name="Samedi_actif" ColumnName="Samedi_actif" />
+          <ScalarProperty Name="Dimanche" ColumnName="Dimanche" />
+          <ScalarProperty Name="Dimanche_actif" ColumnName="Dimanche_actif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -64,6 +64,8 @@ namespace ServiceWindowsForm
             // Remplir la DataGridView
             RemplirLesProcess();
 
+            LoadChart();
+
             
         }
 
@@ -293,6 +295,21 @@ namespace ServiceWindowsForm
 
             return id;
         }
+
+        private void LoadChart()
+        {
+            using (AppSmartLockerEntities1 db = new AppSmartLockerEntities1())
+            {
+                chartQuo.DataSource = db.Historiques.ToList();
+                chartQuo.DataSource = db.ApplicationControlables.ToList();
+                chartQuo.Series["Utilisation"].XValueMember = "Id_app";
+                chartQuo.Series["Utilisation"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+                chartQuo.Series["Utilisation"].YValueMembers = "Temps_total";
+                chartQuo.Series["Utilisation"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;     
+
+            }
+        }
+
     }
 }
 

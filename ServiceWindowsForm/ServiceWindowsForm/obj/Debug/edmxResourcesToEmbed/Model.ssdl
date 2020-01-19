@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppSmartLockerModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApplicationControlable">
+    <Key>
+      <PropertyRef Name="Id_app" />
+    </Key>
+    <Property Name="Id_app" Type="int" Nullable="false" />
+    <Property Name="Nom_app" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationControlee">
+    <Key>
+      <PropertyRef Name="Id_app" />
+    </Key>
+    <Property Name="Id_app" Type="int" Nullable="false" />
+    <Property Name="Est_actif" Type="bit" Nullable="false" />
+    <Property Name="Tps_exe_restant" Type="int" Nullable="false" />
+    <Property Name="Tps_limite_atteinte" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Historique">
+    <Key>
+      <PropertyRef Name="Id_app" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Id_app" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Temps_total" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TempsDefini">
+    <Key>
+      <PropertyRef Name="Id_app" />
+    </Key>
+    <Property Name="Id_app" Type="int" Nullable="false" />
+    <Property Name="Duree_blocage" Type="int" />
+    <Property Name="Lundi" Type="int" />
+    <Property Name="Lundi_actif" Type="bit" Nullable="false" />
+    <Property Name="Mardi" Type="int" />
+    <Property Name="Mardi_actif" Type="bit" Nullable="false" />
+    <Property Name="Mercredi" Type="int" />
+    <Property Name="Mercredi_actif" Type="bit" Nullable="false" />
+    <Property Name="Jeudi" Type="int" />
+    <Property Name="Jeudi_actif" Type="bit" Nullable="false" />
+    <Property Name="Vendredi" Type="int" />
+    <Property Name="Vendredi_actif" Type="bit" Nullable="false" />
+    <Property Name="Samedi" Type="int" />
+    <Property Name="Samedi_actif" Type="bit" Nullable="false" />
+    <Property Name="Dimanche" Type="int" />
+    <Property Name="Dimanche_actif" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ApplicationControlee_ApplicationControlable">
+    <End Role="ApplicationControlable" Type="Self.ApplicationControlable" Multiplicity="1" />
+    <End Role="ApplicationControlee" Type="Self.ApplicationControlee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationControlable">
+        <PropertyRef Name="Id_app" />
+      </Principal>
+      <Dependent Role="ApplicationControlee">
+        <PropertyRef Name="Id_app" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Historique_ApplicationControlable">
+    <End Role="ApplicationControlable" Type="Self.ApplicationControlable" Multiplicity="1" />
+    <End Role="Historique" Type="Self.Historique" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationControlable">
+        <PropertyRef Name="Id_app" />
+      </Principal>
+      <Dependent Role="Historique">
+        <PropertyRef Name="Id_app" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TempsDefini_ApplicationControlee">
+    <End Role="ApplicationControlee" Type="Self.ApplicationControlee" Multiplicity="1" />
+    <End Role="TempsDefini" Type="Self.TempsDefini" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationControlee">
+        <PropertyRef Name="Id_app" />
+      </Principal>
+      <Dependent Role="TempsDefini">
+        <PropertyRef Name="Id_app" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppSmartLockerModel1StoreContainer">
+    <EntitySet Name="ApplicationControlable" EntityType="Self.ApplicationControlable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationControlee" EntityType="Self.ApplicationControlee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Historique" EntityType="Self.Historique" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TempsDefini" EntityType="Self.TempsDefini" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ApplicationControlee_ApplicationControlable" Association="Self.FK_ApplicationControlee_ApplicationControlable">
+      <End Role="ApplicationControlable" EntitySet="ApplicationControlable" />
+      <End Role="ApplicationControlee" EntitySet="ApplicationControlee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Historique_ApplicationControlable" Association="Self.FK_Historique_ApplicationControlable">
+      <End Role="ApplicationControlable" EntitySet="ApplicationControlable" />
+      <End Role="Historique" EntitySet="Historique" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TempsDefini_ApplicationControlee" Association="Self.FK_TempsDefini_ApplicationControlee">
+      <End Role="ApplicationControlee" EntitySet="ApplicationControlee" />
+      <End Role="TempsDefini" EntitySet="TempsDefini" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

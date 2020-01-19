@@ -27,3 +27,10 @@ C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.csproj.GenerateResource.cache
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.exe
 C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.pdb
+C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\EntityFramework.dll
+C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\EntityFramework.xml
+C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.csprojAssemblyReference.cache
+C:\Users\Orlane\source\repos\AppSmartLock\ServiceWindowsForm\ServiceWindowsForm\obj\Debug\ServiceWindowsForm.csproj.CopyComplete
